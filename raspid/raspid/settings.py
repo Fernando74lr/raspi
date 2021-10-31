@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'users',
-
 ]
 
 MIDDLEWARE = [
@@ -78,7 +77,7 @@ WSGI_APPLICATION = 'raspid.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'raspi-db',
+        'NAME': 'raspi',
         'USER': 'postgres',
         'PASSWORD': 'adsoft',
         'HOST': '34.125.7.41',

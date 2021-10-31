@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'raspid.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'raspi-db',
+        'USER': 'postgres',
+        'PASSWORD': 'adsoft',
+        'HOST': '34.125.7.41',
+        'PORT': '5432'
     }
 }
 
@@ -122,5 +126,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-    'SCHEMA': 'hackernews.schema.schema',
+    'SCHEMA': 'raspid.schema.schema',
 }

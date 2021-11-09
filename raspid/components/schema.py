@@ -69,7 +69,6 @@ class UpdateData(graphene.Mutation):
 
     component = graphene.Field(ComponentType)
 
-    @classmethod
     def mutate(self, info, value, id):
         component = Component.objects.get(pk=id)
         component.value = value
@@ -79,4 +78,5 @@ class UpdateData(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     create_component = CreateComponent.Field()
+    update_component = UpdateData.Field()
 

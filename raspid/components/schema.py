@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-
+from users.schema import UserType
 from .models import Component
 
 
@@ -21,8 +21,9 @@ class CreateComponent(graphene.Mutation):
     cType = graphene.String()
     value = graphene.String()
     unit = graphene.String()
-    #token = graphene.String()
-    #id_user = graphene.Int()
+    owner = graphene.Field(UserType)
+    
+    
 
     #2
     class Arguments:
@@ -35,7 +36,17 @@ class CreateComponent(graphene.Mutation):
 
     #3
     def mutate(self, info, name, cType, value, unit):
-        component = Component(name=name, cType=cType, value=value, unit=unit)
+        #component = Component(name=name, cType=cType, value=value, unit=unit)
+        #component.save()
+        user = info.context.user or None
+
+        component = Component(
+            name = name,
+            cType = cType,
+            value = value,
+            unit = unit,
+            owner=user,
+        )
         component.save()
 
         return CreateComponent( 
@@ -44,6 +55,7 @@ class CreateComponent(graphene.Mutation):
             cType=component.cType, 
             value=component.value, 
             unit=component.unit,
+            owner=component.owner,
         )
 
 #4

@@ -8,5 +8,5 @@ class Component(models.Model):
     value = models.TextField(blank=True)
     unit = models.TextField(blank=True)
     #token = models.TextField(blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)

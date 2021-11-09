@@ -1,0 +1,11 @@
+version: '3'
+services:
+  fernando-graphql:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8090
+    volumes:
+    - .:/hackernews
+    ports:
+    - "8090:8090"
+    env_file:
+      - .env

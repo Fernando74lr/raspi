@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Component(models.Model):
@@ -7,4 +8,5 @@ class Component(models.Model):
     value = models.TextField(blank=True)
     unit = models.TextField(blank=True)
     #token = models.TextField(blank=True)
-    #id_user = models.TextField(blank=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)

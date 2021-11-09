@@ -64,13 +64,14 @@ class UpdateData(graphene.Mutation):
     class Arguments:
         # Mutation to update a category 
         value = graphene.String(required=True)
-        id = graphene.ID()
+        #id = graphene.ID()
+        name = graphene.String()
 
 
     component = graphene.Field(ComponentType)
 
-    def mutate(self, info, value, id):
-        component = Component.objects.get(pk=id)
+    def mutate(self, info, value, name):
+        component = Component.objects.get(name=name)
         component.value = value
         component.save()
         

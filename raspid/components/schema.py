@@ -58,6 +58,25 @@ class CreateComponent(graphene.Mutation):
             owner=component.owner,
         )
 
-#4
+
+
+class UpdateData(graphene.Mutation):
+    class Arguments:
+        # Mutation to update a category 
+        value = graphene.String(required=True)
+        id = graphene.ID()
+
+
+    component = graphene.Field(ComponentType)
+
+    @classmethod
+    def mutate(self, info, value, id):
+        component = Component.objects.get(pk=id)
+        component.value = value
+        component.save()
+        
+        return UpdateData(component=component)
+
 class Mutation(graphene.ObjectType):
     create_component = CreateComponent.Field()
+

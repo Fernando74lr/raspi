@@ -4,7 +4,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8090
     volumes:
-    - .:/hackernews
+    - .:/raspid
     ports:
     - "8090:8090"
     env_file:

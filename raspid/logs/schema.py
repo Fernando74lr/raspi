@@ -22,7 +22,7 @@ class CreateLog(graphene.Mutation):
         value = graphene.String()
 
     def mutate(self, info, value):
-        component = info.context.component or None
+        component = component.id or None
 
         log = Log(
             value = value,

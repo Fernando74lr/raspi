@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'users',
     'components',
+    'logs',
     'corsheaders'
 ]
 

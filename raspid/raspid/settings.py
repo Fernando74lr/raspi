@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'raspi',
         'USER': 'postgres',
-        'PASSWORD': 'adsoft',
-        'HOST': '34.125.7.41',
+        'PASSWORD': 'raspi3$',
+        'HOST': '34.125.235.58',
         'PORT': '5432'
     }
 }

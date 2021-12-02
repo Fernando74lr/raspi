@@ -16,24 +16,23 @@ class Query(graphene.ObjectType):
 class CreateLog(graphene.Mutation):
     id = graphene.Int()
     value = graphene.String()
-    component = graphene.Field(ComponentType)
+    name = graphene.String()
     
     class Arguments:
         value = graphene.String()
+        name = graphene.String()
 
-    def mutate(self, info, value):
-        component = component.id or None
-
+    def mutate(self, info, value, name):
         log = Log(
             value = value,
-            component=component,
+            name=name,
         )
         log.save()
 
         return CreateLog( 
             id=log.id,
             value=log.value,
-            component=log.component,
+            name=log.name,
         )
 
 class Mutation(graphene.ObjectType):
